@@ -13,6 +13,7 @@ The hwc source file should be given execute permissions and installed to a direc
 
 # Usage and tutorial
 To use hwc, you specify an output file using the -o option and a list of (any language) source files and libraries to link.
+```
 $ ./hwc --help
 Usage: hwc [options] file1 file2 ...
 
@@ -20,26 +21,33 @@ Options:
   -h, --help            show this help message and exit
   -o OUTFILE, --outfile=OUTFILE
                         File name of the compiled binary
+```
 
 First, lets compile a hello world program written in C:
+```
 $ echo '#include<stdio.h>\nint main(){ printf(\"Hello world!\\n\"); exit 0; }' > hello.c
 $ hwc -o hello_in_c hello.c
 $ ./hello_in_c
 Hello world!
-
+```
 We can use any language we want. Try python:
+```
 $ echo 'print("Hello world!")' > hello.py
 $ hwc -o hello_in_py hello.py
 $ ./hello_in_py
 Hello world!
+```
 
 Note that the input file can be in new languages that don't have a compiler yet:
+```
 $ echo 'This isn't even a real programming language!!!' > source.nonsense
 $ hwc -o hello_in_nonsense source.nonsense
 $ ./hello_in_nonsense
 Hello world!
-
+```
 Source input is actually optional:
+```
 $ hwc -o hello_from_scratch
 $ ./hello_from_scratch
 Hello world!
+```
