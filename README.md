@@ -45,7 +45,7 @@ $ hwc -o hello_in_nonsense source.nonsense
 $ ./hello_in_nonsense
 Hello world!
 ```
-Source input is actually optional:
+Source input is actually optional. We can bootstrap hello world binaries from vacuum fluctuations:
 ```
 $ hwc -o hello_from_scratch
 $ ./hello_from_scratch
