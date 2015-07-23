@@ -1,0 +1,28 @@
+#!/bin/env python
+
+import os
+import subprocess as sp
+from optparse import OptionParser
+
+#Set up the option parser
+usage = "usage: %prog [options] file1 file2 ..."
+parser = OptionParser(usage=usage)
+parser.add_option("-o", "--outfile", dest="outfile",
+                  help="File name of the compiled binary", 
+                  default="a.out", metavar="OUTFILE")
+(options, args) = parser.parse_args()
+
+#Some instructions for printing Hello world!
+cCode = '#include<stdio.h>\nint main(){printf(\"Hello world!\\n\");return 0;}'
+
+#Put instructions into a temporary file
+tempFile = open("temp.c", "w")
+tempFile.write(cCode)
+tempFile.close()
+
+# Create the hello world binary file
+gccCommand = "gcc -o " + options.outfile + " temp.c"
+sp.call(gccCommand, shell=True)
+
+# Clean up temporary files
+os.remove('temp.c')
